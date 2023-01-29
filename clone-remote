@@ -1,0 +1,162 @@
+Git Origin:
+----------
+Origin is just an alias (a name given) to the URL of remote repo
+
+# git clone 
+Downloads all the data of a remote repo, creates origin
+
+# git remote
+You can see that Origin is created
+
+# git remote -v
+You can see the URL of Origin 
+
+OK, what other commands do create Origin?
+# mkdir Git-ProGit
+# cd Git-ProGit
+# git init
+Initialized empty Git repository in C:/Users/ryarrapu/Git-ProGit/.git/
+
+# git remote add progit https://github.com/yrnr/Git-UseGit.git
+# git remote
+progit
+
+# git remote -v
+progit  https://github.com/yrnr/Git-UseGit.git (fetch)
+progit  https://github.com/yrnr/Git-UseGit.git (push)
+
+# git fetch https://github.com/yrnr/Git-UseGit.git
+remote: Enumerating objects: 18, done.
+remote: Counting objects: 100% (18/18), done.
+remote: Compressing objects: 100% (13/13), done.
+remote: Total 18 (delta 1), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (18/18), 4.15 KiB | 22.00 KiB/s, done.
+From https://github.com/yrnr/Git-UseGit
+ * branch            HEAD       -> FETCH_HEAD
+
+# git branch
+<nothing>
+
+# git remote show origin
+fatal: 'origin' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+# git remote
+progit
+
+# git remote show progit
+* remote progit
+  Fetch URL: https://github.com/yrnr/Git-UseGit.git
+  Push  URL: https://github.com/yrnr/Git-UseGit.git
+  HEAD branch: main
+  Remote branch:
+    main new (next fetch will store in remotes/progit)
+
+# git checkout -b localmain
+Switched to a new branch 'localmain'
+#git branch --all
+<nothing>
+
+You see? Nothing. No branch is listed, even though it created a branch named "localmain" . 
+But ...
+# git status
+On branch localmain
+No commits yet
+nothing to commit (create/copy files and use "git add" to track)
+
+# git branch --list
+<nothing>
+
+Why no branch? There is a branch called "localmain", in git-talk it is an unboarn-branch.
+Remember what a branch is? It is just a name given to a commit ID (a movable comitt ID).
+But we have no commits yet in our repository. 
+Let's just create a file called "unborn-branch.txt", and cmommit this change and see.
+
+# echo "Do you know what an unborn branch is in Git jargon?" > unborn-branch.txt
+# git status
+On branch localmain
+No commits yet
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        unborn-branch.txt
+nothing added to commit but untracked files present (use "git add" to track)
+
+# git add unborn-branch.txt
+# git status
+On branch localmain
+No commits yet
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   unborn-branch.txt
+
+# git commit -m "This commit is made to give birth to unborn branch localmain"
+[localmain (root-commit) b011c28] This commit is made to give birth to unborn branch localmain
+ 1 file changed, 1 insertion(+)
+ create mode 100644 unborn-branch.txt
+
+# git status
+On branch localmain
+nothing to commit, working tree clean
+
+# git branch --all
+* localmain
+
+When you make the very first commit in this new repository, now branch names can exist. Git creates the unborn branch's name as a valid branch name, and stores in that name the hash ID of the new commit you just created. And, now that one commit exists, you can now create as many branch names as you like. All of them will necessarily have to hold that one commit's hash ID, until you create a second commit, when each name can hold either the first commit's ID, or the second commit's. But in that special state, when there are no commits at all, there can be no branch names either.
+Source: https://stackoverflow.com/questions/21769813/git-branch-not-returning-any-results
+
+# git checkout --orphan localunborn
+Switched to a new branch 'localunborn'
+# git branch --all
+  localmain
+You see? It said it has switched to new branch 'localunborn', but...
+It is listing 'localmain' (without the asterisk *)
+Meaning, 'localmain' is not the branch we are currently working on (Working-tree)
+But what is the current Working-tree? 
+It must be the new unborn branch 'localunborn', we just created with git branch --orphan flag.
+
+#git status
+On branch localunborn
+No commits yet
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   unborn-branch.txt
+
+# git commit -m "This commit is to give birth to the 2nd unborn-branch we created with --orphan flag of git-branch command"
+[localunborn (root-commit) 562a6b2] This commit is to give birth to the 2nd unborn-branch we created with --orphan flag of git-branch command
+ 1 file changed, 1 insertion(+)
+ create mode 100644 unborn-branch.txt
+
+# git branch --all
+  localmain
+* localunborn
+You see? Now the 'localunborn' branch is listed and with asterisk (*)
+Meaning 'localunborn' is the branch we are working on (current Working-tree).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
