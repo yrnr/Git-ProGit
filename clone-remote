@@ -1,0 +1,4 @@
+# git clone ...downloads all the data of a remote repo, creates origin
+You can check it with # git remote
+Origin is just a name given to the URL of the remote repo
+You can see the URL with # git remote -v
