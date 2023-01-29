@@ -1,4 +1,9 @@
+Git Origin:
+----------
+Origin is just an alias (a name given) to the URL of remote repo
 # git clone ...downloads all the data of a remote repo, creates origin
 You can check it with # git remote
-Origin is just a name given to the URL of the remote repo
+
 You can see the URL with # git remote -v
+
+OK, what other commands do create Origin?
