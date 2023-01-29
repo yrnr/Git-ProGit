@@ -1,6 +1,6 @@
 # Git-ProGit
 
-A few useful notes 
+A few random notes 
 
 A few commands and their usage
 
