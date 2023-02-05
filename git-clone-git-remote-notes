@@ -1,0 +1,38 @@
+Git Origin:
+----------
+Origin is just an alias (a name given) to the URL of remote repo
+
+# git clone 
+Downloads all the data of a remote repo, creates origin
+
+# git remote
+You can see that Origin is created
+
+# git remote -v
+You can see the URL of Origin 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
