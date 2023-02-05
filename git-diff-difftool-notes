@@ -1,0 +1,59 @@
+
+git diff
+git diff --cached
+git difftool
+
+The committed file "unborn-branch" had this text as it's content:
+"Do you know what an unborn branch is in Git jargon?"
+I added "That's it." to its bottom. And staged this file with "git add".
+I then added "Done" to it's bottom, but left it un-staged.
+Now, you see the "git diff", vs "git diff --staged/--cached" vs "git difftool".
+
+
+C:\Users\ryarrapu\Git-ProGit>git diff
+diff --git a/unborn-branch.txt b/unborn-branch.txt
+index fa2ed85..f80938d 100644
+--- a/unborn-branch.txt
++++ b/unborn-branch.txt
+@@ -1,2 +1,3 @@
+ "Do you know what an unborn branch is in Git jargon?"
+ "That's it."
++"Done"
+
+C:\Users\ryarrapu\Git-ProGit>git diff --cached
+diff --git a/unborn-branch.txt b/unborn-branch.txt
+index cac1f14..fa2ed85 100644
+--- a/unborn-branch.txt
++++ b/unborn-branch.txt
+@@ -1 +1,2 @@
+ "Do you know what an unborn branch is in Git jargon?"
++"That's it."
+
+C:\Users\ryarrapu\Git-ProGit>git diff --staged
+diff --git a/unborn-branch.txt b/unborn-branch.txt
+index cac1f14..fa2ed85 100644
+--- a/unborn-branch.txt
++++ b/unborn-branch.txt
+@@ -1 +1,2 @@
+ "Do you know what an unborn branch is in Git jargon?"
++"That's it."
+
+
+C:\Users\ryarrapu\Git-ProGit>git difftool --tool-help
+'git difftool --tool=<tool>' may be set to one of the following:
+                vimdiff          Use Vim
+                winmerge         Use WinMerge (requires a graphical session)
+
+The following tools are valid, but not currently available:
+                araxis           Use Araxis Merge (requires a graphical session)
+                bc               Use Beyond Compare (requires a graphical session)
+                bc3              Use Beyond Compare (requires a graphical session)
+
+
+
+Default difftool is vimdiff. 
+You can set 'winmerge' (if installed and it is in system path), as difftool as below:
+git config --replace --global diff.tool winmerge
+git config --replace --global difftool.prompt false
+git difftool
+git difftool --staged

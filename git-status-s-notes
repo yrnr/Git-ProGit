@@ -1,0 +1,67 @@
+# git status
+# git status --short
+ OR
+# git status -s
+C:\Users\ryarrapu\Git-ProGit>git status --short
+ D clone-remote
+?? git-clone-git-remote-notes
+?? git-config-notes
+?? git-unborn-branch-notes
+
+D = Deleted file
+? = New file (not yet tracked by git)
+A = Added to staging area (Git considers it for next commit)
+M = Modified
+Did you notice, "git status -s" output has two columns of "?" before filenames-column?
+First column is about files in staging area = files marked for next commit
+Second column is about files in working dir = newly created files or modified-or-deleted-files which are tracked by git.
+
+C:\Users\ryarrapu\Git-ProGit>git status -s
+ D clone-remote
+A  git-clone-git-remote-notes
+?? git-config-notes
+?? git-unborn-branch-notes
+
+C:\Users\ryarrapu\Git-ProGit>git add git-config-notes
+
+C:\Users\ryarrapu\Git-ProGit>git status -s
+ D clone-remote
+A  git-clone-git-remote-notes
+A  git-config-notes
+?? git-unborn-branch-notes
+
+C:\Users\ryarrapu\Git-ProGit>echo "\n*******************\n">>git-config-notes
+
+C:\Users\ryarrapu\Git-ProGit>git status -s
+ D clone-remote
+A  git-clone-git-remote-notes
+AM git-config-notes
+?? git-unborn-branch-notes
+
+C:\Users\ryarrapu\Git-ProGit>git add git-config-notes
+
+C:\Users\ryarrapu\Git-ProGit>git status -s
+ D clone-remote
+A  git-clone-git-remote-notes
+A  git-config-notes
+?? git-unborn-branch-notes
+
+When do you see MM in the first and 2nd columns of "git status -s"?
+
+C:\Users\ryarrapu\Git-ProGit>echo "That's it." >> unborn-branch.txt
+
+C:\Users\ryarrapu\Git-ProGit>git status -s
+ M unborn-branch.txt
+
+C:\Users\ryarrapu\Git-ProGit>git add unborn-branch.txt
+
+C:\Users\ryarrapu\Git-ProGit>git status -s
+M  unborn-branch.txt
+
+C:\Users\ryarrapu\Git-ProGit>echo "Done" >> unborn-branch.txt
+
+C:\Users\ryarrapu\Git-ProGit>git status -s
+MM unborn-branch.txt
+
+
+See the file "git-diff-difftool-notes" from here.
