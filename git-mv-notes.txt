@@ -1,0 +1,12 @@
+
+If you want to rename a file
+# git mv file_name_before file_name_after
+
+
+C:\Users\ryarrapu\Git-ProGit>git mv git-commit-notes.txt git-commit-notes
+
+C:\Users\ryarrapu\Git-ProGit>git status -s
+RM git-commit-notes.txt -> git-commit-notes
+
+
+You see? RM = Renamed and Modified
