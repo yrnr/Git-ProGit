@@ -12,6 +12,7 @@ D = Deleted file
 ? = New file (not yet tracked by git)
 A = Added to staging area (Git considers it for next commit)
 M = Modified
+R = Renamed (using # git mv file1 file2)
 Did you notice, "git status -s" output has two columns of "?" before filenames-column?
 First column is about files in staging area = files marked for next commit
 Second column is about files in working dir = newly created files or modified-or-deleted-files which are tracked by git.

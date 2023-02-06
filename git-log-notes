@@ -52,3 +52,84 @@ To get time history that happened dusing specific time period:
 # git log --since="3.years" --pretty=format:"%h - %an, %ar - %cn, %cr : %s"
 # git log --since="5.months" --until="4.days" --pretty=format:"%h - %an, %ar - %cn, %cr : %s"
 # git log --since="5.years" --until="4.weeks" --pretty=format:"%h - %an, %ar - %cn, %cr : %s"
+
+
+------------------------------------------------------------------------------------------------------
+When you see "Your branch is ahead of 'origin/localunborn' by 2 commits." ...
+You want to know what those two comits that your branch is ahead of origin/localunborn ...
+You run # git log -3 to see the last 3 commits
+The output shows Where your local branch HEAD is, and where origin/localunborn's HEAD is.
+Example: See below commands.
+
+
+C:\Users\ryarrapu\Git-ProGit>git switch localunborn
+Switched to branch 'localunborn'
+M       git-commit-notes
+M       git-status-s-notes
+Your branch is ahead of 'origin/localunborn' by 2 commits.
+  (use "git push" to publish your local commits)
+
+C:\Users\ryarrapu\Git-ProGit>git log -4
+commit 2f85ff45e574e182732d7f462e98af5cb1988dad (HEAD -> localunborn, mvbranch)
+Author: yrnr <iamramuhere@gmail.com>
+Date:   Mon Feb 6 17:15:03 2023 +0530
+
+    Renamed the committed file git-commit-notes.txt to git-commit-notes
+
+commit 28bf7f4fbcf2fe06544863301588bea867efef9f
+Author: yrnr <iamramuhere@gmail.com>
+Date:   Mon Feb 6 17:08:33 2023 +0530
+
+    Notes on git log
+
+commit 45fb64e21a45999f8195e1cf5b4e0978ec56bf02 (origin/localunborn)
+Author: yrnr <iamramuhere@gmail.com>
+Date:   Sun Feb 5 19:14:34 2023 +0530
+
+    Notes on git commands diff --cached/--staged, difftool and status -s
+
+commit 4e27d53266fe67156471174250ae3d3282f86121
+Author: yrnr <iamramuhere@gmail.com>
+Date:   Sun Feb 5 18:39:12 2023 +0530
+
+    Deleting file clone-remote
+
+C:\Users\ryarrapu\Git-ProGit>git push
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (6/6), 1.35 KiB | 1.35 MiB/s, done.
+Total 6 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), completed with 1 local object.
+To https://github.com/yrnr/Git-ProGit.git
+   45fb64e..2f85ff4  localunborn -> localunborn
+
+C:\Users\ryarrapu\Git-ProGit>git log -4
+commit 2f85ff45e574e182732d7f462e98af5cb1988dad (HEAD -> localunborn, origin/localunborn, mvbranch)
+Author: yrnr <iamramuhere@gmail.com>
+Date:   Mon Feb 6 17:15:03 2023 +0530
+
+    Renamed the committed file git-commit-notes.txt to git-commit-notes
+
+commit 28bf7f4fbcf2fe06544863301588bea867efef9f
+Author: yrnr <iamramuhere@gmail.com>
+Date:   Mon Feb 6 17:08:33 2023 +0530
+
+    Notes on git log
+
+commit 45fb64e21a45999f8195e1cf5b4e0978ec56bf02
+Author: yrnr <iamramuhere@gmail.com>
+Date:   Sun Feb 5 19:14:34 2023 +0530
+
+    Notes on git commands diff --cached/--staged, difftool and status -s
+
+commit 4e27d53266fe67156471174250ae3d3282f86121
+Author: yrnr <iamramuhere@gmail.com>
+Date:   Sun Feb 5 18:39:12 2023 +0530
+
+    Deleting file clone-remote
+
+C:\Users\ryarrapu\Git-ProGit>
+
+
