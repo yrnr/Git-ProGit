@@ -1,0 +1,6 @@
+
+To open a editor to write your commit message
+# git commit 
+
+To open a editor with status and diff:
+# git commit -v

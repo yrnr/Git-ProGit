@@ -1,0 +1,54 @@
+To get only the latest two logs:
+# git log -2
+# git log -4 --oneline
+# git log -n 4 --oneline
+To get commits made by a specific person (author/committer)
+# git log -n 5 --oneline --author "Ramanadha Reddy"
+# git log -n 5 --oneline --committer "Ramanadha Reddy"
+
+It can dig out the history based on a search string such as function_name of a file or in multiple files
+Git Log  - Pick-axe command:
+If you want to dig commits made after changing code of a function called "get_esx_nodes" 
+# git log -S get_esx_nodes
+
+If you want to filter this search on a file named "my_python_script.py"
+# git log -S get_esx_nodes -- my_python_script.py
+
+If you want to see what code-changes are made, and not just the commit messages and hash:
+# git --patch -S get_esx_nodes -- my_python_script.py
+# git -p -S get_esx_nodes -- my_python_script.py
+
+If you want to see all history of changes done to a file:
+# git log -- my_python_script.py
+
+If you want to see all history of changes done to a file in one line:
+# git log --pretty=oneline -- my_python_script.py
+
+To get the output in a format you like:
+# git log --pretty=format:"%h - %an, %ar : %s" -- my_python_script.py
+
+To get the file that were modified in each commit, 
+... number of lines added or removed 
+... and a summary with the total number of files and lines changed.
+# git log --pretty=format:"%h - %cn, %cr : %s" --stat
+
+To see branching along with commit history:
+# git log --graph
+
+To get git log of a speficic branch only:
+# got log <branch_name> 
+Example:
+# git log origin/loop_upgrade --since="2021-11-26" --until="2021-12-26" --graph --decorate=full --source --name-only
+ 
+Pretty formatted commit history of a specific file, with diff (-p or --patch):
+# git log -p --pretty=format:"%h - %an, %ar : %s" -- my_python_script.py
+# git log --patch --pretty=format:"%h - %an, %ar : %s" -- my_python_script.py
+# git log --graph -p --pretty=format:"%h - %an, %ar : %s" -- my_python_script.py
+# git log --pretty=format:"%h - %an, %ar : %s" -- my_python_script.py
+
+To get time history that happened dusing specific time period:
+# git log --since="5.years" --pretty=format:"%h - %an, %ar : %s" -- my_python_script.py
+# git log --since="2.years" --pretty=format:"%h - %an, %ar : %s"
+# git log --since="3.years" --pretty=format:"%h - %an, %ar - %cn, %cr : %s"
+# git log --since="5.months" --until="4.days" --pretty=format:"%h - %an, %ar - %cn, %cr : %s"
+# git log --since="5.years" --until="4.weeks" --pretty=format:"%h - %an, %ar - %cn, %cr : %s"
