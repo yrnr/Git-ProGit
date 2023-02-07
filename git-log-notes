@@ -1,0 +1,141 @@
+To get only the latest two logs:
+# git log -2
+# git log -4 --oneline
+# git log -n 4 --oneline
+To get commits made by a specific person (author/committer)
+# git log -n 5 --oneline --author "Ramanadha Reddy"
+# git log -n 5 --oneline --committer "Ramanadha Reddy"
+
+It can dig out the history based on a search string such as function_name of a file or in multiple files
+Git Log  - Pick-axe command:
+If you want to dig commits made after changing code of a function called "get_esx_nodes" 
+# git log -S get_esx_nodes
+
+If you want to filter this search on a file named "my_python_script.py"
+# git log -S get_esx_nodes -- my_python_script.py
+
+If you want to see what code-changes are made, and not just the commit messages and hash:
+# git --patch -S get_esx_nodes -- my_python_script.py
+# git -p -S get_esx_nodes -- my_python_script.py
+
+If you want to see all history of changes done to a file:
+# git log -- my_python_script.py
+
+If you want to see all history of changes done to a file in one line:
+# git log --pretty=oneline -- my_python_script.py
+
+To get the output in a format you like:
+# git log --pretty=format:"%h - %an, %ar : %s" -- my_python_script.py
+
+To get the file that were modified in each commit, 
+... number of lines added or removed 
+... and a summary with the total number of files and lines changed.
+# git log --pretty=format:"%h - %cn, %cr : %s" --stat
+
+To see branching along with commit history:
+# git log --graph
+
+To get git log of a speficic branch only:
+# got log <branch_name> 
+Example:
+# git log origin/loop_upgrade --since="2021-11-26" --until="2021-12-26" --graph --decorate=full --source --name-only
+ 
+Pretty formatted commit history of a specific file, with diff (-p or --patch):
+# git log -p --pretty=format:"%h - %an, %ar : %s" -- my_python_script.py
+# git log --patch --pretty=format:"%h - %an, %ar : %s" -- my_python_script.py
+# git log --graph -p --pretty=format:"%h - %an, %ar : %s" -- my_python_script.py
+# git log --pretty=format:"%h - %an, %ar : %s" -- my_python_script.py
+
+To get time history that happened dusing specific time period:
+# git log --since="5.years" --pretty=format:"%h - %an, %ar : %s" -- my_python_script.py
+# git log --since="2.years" --pretty=format:"%h - %an, %ar : %s"
+# git log --since="3.years" --pretty=format:"%h - %an, %ar - %cn, %cr : %s"
+# git log --since="5.months" --until="4.days" --pretty=format:"%h - %an, %ar - %cn, %cr : %s"
+# git log --since="5.years" --until="4.weeks" --pretty=format:"%h - %an, %ar - %cn, %cr : %s"
+
+
+------------------------------------------------------------------------------------------------------
+Useful command:
+When was the last commit done on each file in a directory? 
+By who? By how much?
+You want to customize the date? 
+# ls | xargs -I {} git --no-pager log -n 1 --stat --pretty=format:"%h %ad %an %s %n" --date=format:"%Y-%b-%d" -- {}
+------------------------------------------------------------------------------------------------------
+When you see "Your branch is ahead of 'origin/localunborn' by 2 commits." ...
+You want to know what those two comits that your branch is ahead of origin/localunborn ...
+You run # git log -3 to see the last 3 commits
+The output shows Where your local branch HEAD is, and where origin/localunborn's HEAD is.
+Example: See below commands.
+
+
+C:\Users\ryarrapu\Git-ProGit>git switch localunborn
+Switched to branch 'localunborn'
+M       git-commit-notes
+M       git-status-s-notes
+Your branch is ahead of 'origin/localunborn' by 2 commits.
+  (use "git push" to publish your local commits)
+
+C:\Users\ryarrapu\Git-ProGit>git log -4
+commit 2f85ff45e574e182732d7f462e98af5cb1988dad (HEAD -> localunborn, mvbranch)
+Author: yrnr <iamramuhere@gmail.com>
+Date:   Mon Feb 6 17:15:03 2023 +0530
+
+    Renamed the committed file git-commit-notes.txt to git-commit-notes
+
+commit 28bf7f4fbcf2fe06544863301588bea867efef9f
+Author: yrnr <iamramuhere@gmail.com>
+Date:   Mon Feb 6 17:08:33 2023 +0530
+
+    Notes on git log
+
+commit 45fb64e21a45999f8195e1cf5b4e0978ec56bf02 (origin/localunborn)
+Author: yrnr <iamramuhere@gmail.com>
+Date:   Sun Feb 5 19:14:34 2023 +0530
+
+    Notes on git commands diff --cached/--staged, difftool and status -s
+
+commit 4e27d53266fe67156471174250ae3d3282f86121
+Author: yrnr <iamramuhere@gmail.com>
+Date:   Sun Feb 5 18:39:12 2023 +0530
+
+    Deleting file clone-remote
+
+C:\Users\ryarrapu\Git-ProGit>git push
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (6/6), 1.35 KiB | 1.35 MiB/s, done.
+Total 6 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), completed with 1 local object.
+To https://github.com/yrnr/Git-ProGit.git
+   45fb64e..2f85ff4  localunborn -> localunborn
+
+C:\Users\ryarrapu\Git-ProGit>git log -4
+commit 2f85ff45e574e182732d7f462e98af5cb1988dad (HEAD -> localunborn, origin/localunborn, mvbranch)
+Author: yrnr <iamramuhere@gmail.com>
+Date:   Mon Feb 6 17:15:03 2023 +0530
+
+    Renamed the committed file git-commit-notes.txt to git-commit-notes
+
+commit 28bf7f4fbcf2fe06544863301588bea867efef9f
+Author: yrnr <iamramuhere@gmail.com>
+Date:   Mon Feb 6 17:08:33 2023 +0530
+
+    Notes on git log
+
+commit 45fb64e21a45999f8195e1cf5b4e0978ec56bf02
+Author: yrnr <iamramuhere@gmail.com>
+Date:   Sun Feb 5 19:14:34 2023 +0530
+
+    Notes on git commands diff --cached/--staged, difftool and status -s
+
+commit 4e27d53266fe67156471174250ae3d3282f86121
+Author: yrnr <iamramuhere@gmail.com>
+Date:   Sun Feb 5 18:39:12 2023 +0530
+
+    Deleting file clone-remote
+
+C:\Users\ryarrapu\Git-ProGit>
+
+

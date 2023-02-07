@@ -1,0 +1,45 @@
+How do you handle a file deletion? If the file was tracked by git.
+
+You create a file called "dummy_staged_file".
+You create a file called "dummy_committed_file".
+
+# git add dummycommittedfile
+# git commit -m "Testing git rm: Commit a file before deleting it"
+# git add dummystagedfile
+
+Now you manually delete the files using your OS command (Windows-del or Linux-rm) or GUI
+
+# git status -s
+ D dummycommittedfile
+AD dummystagedfile
+
+# git commit -m "Testing git rm: committing dummystagedfile after deleting it"
+# git status -s
+ D dummycommittedfile
+ D dummystagedfile
+ 
+# git rm dummycommittedfile
+# git status -s
+D  dummycommittedfile = Git tracked your delete operation and recorded it in staging area, it will be committed in your next git commit
+ D dummystagedfile    = Git tracked your delete operation in your workign dir
+
+# git rm dummystagedfile
+# git status -s
+D  dummycommittedfile
+D  dummystagedfile
+
+Now you push your local commits to its tracking remote branch (say in GitHub).
+You can see these files in your repo in GitHub.
+
+Now, back to your local working repo.
+If you create a new branch and checkout, you will find these dummy files checkout out to your new branche's working dir.
+If you did the above, switch back to your actual branch.
+How to delete them from your local branch?
+
+Since your deletion operation is in staging area, you just have to commit it.
+# git commit -m "Testing git rm: After running git rm dummy<..>file"
+
+Now if you checkout to a new branch from here, you will not see those dummy files in your new branche's working dir.
+How to remove them from your GitHub repo? Just push your current local branch.
+#git push
+You can see no dummy file in your GitHub repo.

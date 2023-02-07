@@ -1,0 +1,14 @@
+
+To open a editor to write your commit message
+# git commit 
+
+To open a editor with status and diff:
+# git commit -v
+
+To add tracked files to staging area and commit in one step:
+# git commit -a -m "Your commit message for the tracked files"
+
+What about add new files before commit? Only # git add && git commit ???
+
+
+

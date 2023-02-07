@@ -1,0 +1,56 @@
+Once you clone a remote repo to your local machine, 
+the first thing you may want do is: Customize your git.
+What in your git, can you customize and configure?
+To see what you already have:
+# git config --list
+
+But you dont know where these configs are made.
+What their scope is -- Do these config apply to:
+	- The entire system for all users? (Least priority)
+		[path]/etc/gitconfig
+	- Only to the user's repos? (Can override system-wide config)
+		~/.gitconfig OR ~/.config/git/config
+	- Only to this repo? (Can override user-level and system-level config)
+		.git/config
+You get the answer with:
+# git config --list --show-origin
+(See output of this command at the bottom of this file)
+
+You can edit/set a few config items, with one of the 3 scopes with:
+To change system-wide config, you can edit that config file.
+git config --replace-all --local core.editor "C:\\Program\ Files\\Notepad++\\notepad++.exe" # User level
+git config --local user.name yrnr # --local is default
+
+
+C:\Users\myusername\Git-ProGit>git config --list --show-origin
+file:C:/Program Files/Git/etc/gitconfig diff.astextplain.textconv=astextplain
+file:C:/Program Files/Git/etc/gitconfig filter.lfs.clean=git-lfs clean -- %f
+file:C:/Program Files/Git/etc/gitconfig filter.lfs.smudge=git-lfs smudge -- %f
+file:C:/Program Files/Git/etc/gitconfig filter.lfs.process=git-lfs filter-process
+file:C:/Program Files/Git/etc/gitconfig filter.lfs.required=true
+file:C:/Program Files/Git/etc/gitconfig http.sslbackend=openssl
+file:C:/Program Files/Git/etc/gitconfig http.sslcainfo=C:/Program Files/Git/mingw64/ssl/certs/ca-bundle.crt
+file:C:/Program Files/Git/etc/gitconfig core.autocrlf=true
+file:C:/Program Files/Git/etc/gitconfig core.fscache=true
+file:C:/Program Files/Git/etc/gitconfig core.symlinks=false
+file:C:/Program Files/Git/etc/gitconfig pull.rebase=false
+file:C:/Program Files/Git/etc/gitconfig credential.helper=manager-core
+file:C:/Program Files/Git/etc/gitconfig credential.https://dev.azure.com.usehttppath=true
+file:C:/Program Files/Git/etc/gitconfig init.defaultbranch=master
+file:C:/Users/myusername/.gitconfig       user.name=yrnr
+file:C:/Users/myusername/.gitconfig       user.email=myusername@gmail.com
+file:.git/config        core.repositoryformatversion=0
+file:.git/config        core.filemode=false
+file:.git/config        core.bare=false
+file:.git/config        core.logallrefupdates=true
+file:.git/config        core.symlinks=false
+file:.git/config        core.ignorecase=true
+file:.git/config        core.editor=C:\Program Files\Notepad++\notepad++.exe
+file:.git/config        remote.origin.url=https://github.com/yrnr/Git-ProGit.git
+file:.git/config        remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+file:.git/config        branch.main.remote=origin
+file:.git/config        branch.main.merge=refs/heads/main
+file:.git/config        user.name=yrnrfullname
+file:.git/config        user.name=yrnrfullname@email.com
+
+C:\Users\myusername\Git-ProGit>"\n*******************\n"

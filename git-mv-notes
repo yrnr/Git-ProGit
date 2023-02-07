@@ -1,0 +1,14 @@
+
+If you want to rename a file (Not to delete)
+# git mv file_name_before file_name_after
+
+
+# git mv git-commit-notes.txt git-commit-notes
+
+# echo "Write something to this file at the end" >> git-commit-notes
+
+# git status -s
+RM git-commit-notes.txt -> git-commit-notes
+
+
+You see? RM = Renamed and Modified

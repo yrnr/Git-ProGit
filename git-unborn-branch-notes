@@ -1,17 +1,6 @@
-Git Origin:
-----------
-Origin is just an alias (a name given) to the URL of remote repo
 
-# git clone 
-Downloads all the data of a remote repo, creates origin
-
-# git remote
-You can see that Origin is created
-
-# git remote -v
-You can see the URL of Origin 
-
-OK, what other commands do create Origin?
+We know git clone creates Origin in local repo.
+What other commands can create Origin?
 # mkdir Git-ProGit
 # cd Git-ProGit
 # git init
@@ -134,29 +123,4 @@ Changes to be committed:
 * localunborn
 You see? Now the 'localunborn' branch is listed and with asterisk (*)
 Meaning 'localunborn' is the branch we are working on (current Working-tree).
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
