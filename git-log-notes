@@ -55,6 +55,12 @@ To get time history that happened dusing specific time period:
 
 
 ------------------------------------------------------------------------------------------------------
+Useful command:
+When was the last commit done on each file in a directory? 
+By who? By how much?
+You want to customize the date? 
+# ls | xargs -I {} git --no-pager log -n 1 --stat --pretty=format:"%h %ad %an %s %n" --date=format:"%Y-%b-%d" -- {}
+------------------------------------------------------------------------------------------------------
 When you see "Your branch is ahead of 'origin/localunborn' by 2 commits." ...
 You want to know what those two comits that your branch is ahead of origin/localunborn ...
 You run # git log -3 to see the last 3 commits

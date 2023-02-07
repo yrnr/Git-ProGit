@@ -1,7 +1,11 @@
 
 git diff
 git diff --cached
-git difftool
+git difftool # How to configure a difftool? See below.
+
+To see what's changed between two commits:
+# git --no-pager diff 8ac97f6f2e 6476dd1c88
+# git difftool 8ac97f6f2e 6476dd1c88
 
 The committed file "unborn-branch" had this text as it's content:
 "Do you know what an unborn branch is in Git jargon?"
@@ -53,7 +57,10 @@ The following tools are valid, but not currently available:
 
 Default difftool is vimdiff. 
 You can set 'winmerge' (if installed and it is in system path), as difftool as below:
-git config --replace --global diff.tool winmerge
-git config --replace --global difftool.prompt false
-git difftool
-git difftool --staged
+# git config --replace --global diff.tool winmerge
+# git config --replace --global difftool.prompt false
+
+How these 3 commands are different?
+# git difftool
+# git difftool --cached
+# git difftool --staged
